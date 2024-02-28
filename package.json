@@ -2,11 +2,14 @@
     "name": "technical_task",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://mapledrive.github.io/technical",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "prettier": "prettier --write '*/**/*.{ts,tsx,js,jsx,css,scss,json}'"
+        "prettier": "prettier --write '*/**/*.{ts,tsx,js,jsx,css,scss,json}'",
+        "deploy": "gh-pages -d build",
+        "predeploy": "npm run build"
     },
     "dependencies": {
         "@testing-library/jest-dom": "5.16.4",
