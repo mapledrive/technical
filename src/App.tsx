@@ -28,7 +28,6 @@ const App: React.FC = () => {
         async function fetchCommentData() {
             try {
                 const data = await getCommentsRequest(1);
-                console.log(data, "comments");
                 setComments(data.data);
                 setLoading(false);
             } catch (error) {
@@ -44,7 +43,6 @@ const App: React.FC = () => {
         async function fetchAuthorsData() {
             try {
                 const data = await getAuthorsRequest();
-                console.log(data, "zalupa");
                 setAuthors(data);
                 setLoading(false);
             } catch (error) {
