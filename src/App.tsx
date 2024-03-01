@@ -22,32 +22,31 @@ const App: React.FC = () => {
     const [authors, setAuthors] = useState<IAuthor[]>([]);
     const [comments, setComments] = useState<IComments[]>([]);
     const [loading, setLoading] = useState(true);
-    const [commentError, setCommentError] = useState(null);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         async function fetchCommentData() {
             try {
-                const data = await getCommentsRequest(1);
+                const data = await getCommentsRequest(page);
+                console.log("async", page, data);
                 setComments(data.data);
                 setLoading(false);
             } catch (error) {
-                //setCommentError(error);
+                console.log("error while fetching comments");
                 setLoading(false);
             }
         }
 
         fetchCommentData();
-    }, []);
+    }, [page]);
 
     useEffect(() => {
         async function fetchAuthorsData() {
             try {
                 const data = await getAuthorsRequest();
                 setAuthors(data);
-                setLoading(false);
             } catch (error) {
-                //setError(error);
-                setLoading(false);
+                console.log("error while fetching authors");
             }
         }
 
@@ -57,6 +56,16 @@ const App: React.FC = () => {
     const results = comments.filter((obj) => {
         return obj.parent === null;
     });
+
+    if (loading) {
+        return (
+            <div className="App-header">
+                <div className="wrapper">
+                    <div>loading</div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="App-header">
@@ -71,7 +80,12 @@ const App: React.FC = () => {
                     />
                 ))}
             </div>
-            <button className="load">загрузить еще</button>
+            <button
+                onClick={() => setPage((prevValue) => prevValue + 1)}
+                className="load"
+            >
+                загрузить еще
+            </button>
         </div>
     );
 };
