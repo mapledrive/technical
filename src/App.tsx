@@ -28,7 +28,6 @@ const App: React.FC = () => {
         async function fetchCommentData() {
             try {
                 const data = await getCommentsRequest(page);
-                console.log("async", page, data);
                 setComments(data.data);
                 setLoading(false);
             } catch (error) {
