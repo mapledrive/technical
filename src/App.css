@@ -23,6 +23,7 @@
 
 .holder {
     display: flex;
+    border: 1px dashed black;
 }
 
 .loaded {
@@ -44,7 +45,8 @@
 }
 
 .col1 {
-    min-height: 50px;
+    width: 100px;
+    min-height: 100px;
     flex: 0 0 100px;
     display: flex;
     align-items: center;
@@ -52,9 +54,20 @@
 }
 
 .col2 {
-    min-height: 50px;
+    min-height: 100px;
+    width: 100px;
+    flex: 0 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.center {
+    min-height: 100px;
     flex: 1;
-    /* flex-grow: 1; This also works! */
+    text-align: left;
+    background: olive;
 }
 
 .darken {

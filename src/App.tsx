@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import "./App.css";
 import getAuthorsRequest from "./api/authors/getAuthorsRequest";
 import getCommentsRequest from "./api/comments/getCommentsRequest";
+import Heart from "./Heart";
+import EmptyHeart from "./EmptyHeart";
 
 interface IAuthor {
     id: number;
@@ -101,17 +103,22 @@ const Comment: React.FC = (props: any) => {
                         <img className="pic" src={`${props.avatar}`} alt="" />
                     </div>
                 </div>
-                <div className="col2">
+                <div className="center">
                     {props.name}
                     <br />
                     <p className="darken">{commentDate.toLocaleString()}</p>
+                </div>
+                <div className="col2">
+                    <Heart />
+                    654
+                    <EmptyHeart />
                 </div>
             </div>
             <div className="holder">
                 <div className="col1">
                     <div className="loaded"></div>
                 </div>
-                <div className="col2">{props.text}</div>
+                <div className="center">{props.text}</div>
             </div>
         </div>
     );
