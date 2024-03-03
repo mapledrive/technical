@@ -36,7 +36,7 @@ const App: React.FC = () => {
                 setErrorMsg("");
                 setLoading(false);
             } catch (error) {
-                setErrorMsg("Error while loading data. Try again later.");
+                setErrorMsg("Ошибка загрузки данных. Попробуйте еще раз");
             } finally {
                 setLoading(false);
             }
@@ -51,7 +51,7 @@ const App: React.FC = () => {
                 const data = await getAuthorsRequest();
                 setAuthors(data);
             } catch (error) {
-                console.log("error while fetching authors");
+                console.log("Ошибка загрузки авторов");
             }
         }
 
