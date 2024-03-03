@@ -18,7 +18,13 @@
     max-width: 760px;
 }
 
-.comment-wrap {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    max-width: 760px;
+    border-bottom: 1px solid grey;
 }
 
 .holder {
@@ -48,7 +54,7 @@
 }
 
 .pic {
-    width: 100%; /* or any custom size */
+    width: 100%;
     height: 100%;
     object-fit: contain;
     border-radius: 50%;
@@ -115,7 +121,7 @@
 }
 
 .lower {
-    opacity: 0.5;
+    color: #8297ab;
     margin: 0;
     display: block;
     width: 100%;

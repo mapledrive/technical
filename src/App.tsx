@@ -62,15 +62,25 @@ const App: React.FC = () => {
         setPage((page) => page + 1);
     };
 
-    const results = comments.filter((obj) => {
+    let results = comments.filter((obj) => {
         return obj.parent === null;
     });
+
+    let totalCount = comments.length;
+
+    let totalLikes = comments?.reduce((a: number, b: any) => a + b.likes, 0);
 
     return (
         <div className="App-header">
             <div className="wrapper">
-                {`${comments.length} comments`}
-                <hr />
+                <header className="header">
+                    <span>{totalCount} комментариев</span>
+                    <span className="cardSpan">
+                        <EmptyHeart />
+                        &nbsp;
+                        {totalLikes}
+                    </span>
+                </header>
                 {results &&
                     results.map((post) => (
                         <Comment
