@@ -98,7 +98,7 @@ const Comment: React.FC = (props: any) => {
             <div className="holder">
                 <div className="col1">
                     <div className="loaded">
-                        <img className="pic" src={`${props.avatar}`} />
+                        <img className="pic" src={`${props.avatar}`} alt="" />
                     </div>
                 </div>
                 <div className="col2">
