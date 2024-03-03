@@ -121,14 +121,39 @@
     width: 100%;
 }
 
-.load {
-    background: grey;
-    opacity: 0.5;
-    color: white;
-    border-radius: 5px;
-    margin: 25px;
-}
-
 .errorMsg {
     color: #d86161;
+}
+
+.load-more {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.btn-grad {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-image: linear-gradient(
+        to right,
+        #77a1d3 0%,
+        #79cbca 51%,
+        #77a1d3 100%
+    );
+    margin: 10px;
+    padding: 10px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-grad:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
 }

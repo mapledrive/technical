@@ -58,19 +58,13 @@ const App: React.FC = () => {
         fetchAuthorsData();
     }, []);
 
+    const loadMore = () => {
+        setPage((page) => page + 1);
+    };
+
     const results = comments.filter((obj) => {
         return obj.parent === null;
     });
-
-    if (loading) {
-        return (
-            <div className="App-header">
-                <div className="wrapper">
-                    <div>loading</div>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <div className="App-header">
@@ -87,12 +81,11 @@ const App: React.FC = () => {
                     ))}
             </div>
             {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-            <button
-                onClick={() => setPage((prevValue) => prevValue + 1)}
-                className="load"
-            >
-                загрузить еще
-            </button>
+            <div className="load-more">
+                <button onClick={loadMore} className="btn-grad">
+                    {loading ? "загрузка..." : "загрузить еще"}
+                </button>
+            </div>
         </div>
     );
 };
