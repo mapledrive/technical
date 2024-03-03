@@ -23,12 +23,22 @@
 
 .holder {
     display: flex;
-    border: 1px dashed black;
 }
 
 .loaded {
     width: 50px;
     height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.loading {
+    width: 50px;
+    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +56,16 @@
 
 .col1 {
     width: 100px;
-    min-height: 100px;
+    min-height: 75px;
+    flex: 0 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col11 {
+    width: 100px;
+    min-height: 25px;
     flex: 0 0 100px;
     display: flex;
     align-items: center;
@@ -54,7 +73,7 @@
 }
 
 .col2 {
-    min-height: 100px;
+    min-height: 75px;
     width: 100px;
     flex: 0 0 100px;
     display: flex;
@@ -63,16 +82,43 @@
     text-align: center;
 }
 
-.center {
-    min-height: 100px;
-    flex: 1;
-    text-align: left;
-    background: olive;
+.cardSpan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
 }
 
-.darken {
+.center {
+    flex: 1;
+    text-align: left;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.centered {
+    min-height: 25px;
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.upper {
+    display: block;
+    width: 100%;
+}
+
+.lower {
     opacity: 0.5;
     margin: 0;
+    display: block;
+    width: 100%;
 }
 
 .load {

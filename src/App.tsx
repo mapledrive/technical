@@ -104,21 +104,21 @@ const Comment: React.FC = (props: any) => {
                     </div>
                 </div>
                 <div className="center">
-                    {props.name}
-                    <br />
-                    <p className="darken">{commentDate.toLocaleString()}</p>
+                    <div className="upper">{props.name}</div>
+                    <div className="lower">{commentDate.toLocaleString()}</div>
                 </div>
                 <div className="col2">
-                    <Heart />
-                    654
-                    <EmptyHeart />
+                    <span className="cardSpan">
+                        {props.likes > 0 ? <Heart /> : <EmptyHeart />}&nbsp;
+                        {props.likes}
+                    </span>
                 </div>
             </div>
             <div className="holder">
-                <div className="col1">
-                    <div className="loaded"></div>
+                <div className="col11">
+                    <div className="loading"></div>
                 </div>
-                <div className="center">{props.text}</div>
+                <div className="centered">{props.text}</div>
             </div>
         </div>
     );
