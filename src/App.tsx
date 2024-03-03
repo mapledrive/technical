@@ -66,6 +66,10 @@ const App: React.FC = () => {
         return obj.parent === null;
     });
 
+    let subcomments = comments.filter((obj) => {
+        return obj.parent !== null;
+    });
+
     let totalCount = comments.length;
 
     let totalLikes = comments?.reduce((a: number, b: any) => a + b.likes, 0);
@@ -83,11 +87,24 @@ const App: React.FC = () => {
                 </header>
                 {results &&
                     results.map((post) => (
-                        <Comment
-                            key={post.id}
-                            {...post}
-                            {...authors[post.author]}
-                        />
+                        <>
+                            <Comment
+                                key={post.id}
+                                {...post}
+                                {...authors[post.author]}
+                            />
+                            <br />
+                            <div className="holder">
+                                <div className="col11">
+                                    <div className="loading"></div>
+                                </div>
+                                <div className="centered">
+                                    {subcomments?.find(
+                                        (e) => e?.parent === post?.id,
+                                    )?.text ?? null}
+                                </div>
+                            </div>
+                        </>
                     ))}
             </div>
             {errorMsg && <p className="errorMsg">{errorMsg}</p>}
@@ -104,12 +121,19 @@ export default App;
 
 const Comment: React.FC = (props: any) => {
     let commentDate = new Date(props.created);
+
     return (
         <div className="comment-wrap">
             <div className="holder">
                 <div className="col1">
                     <div className="loaded">
-                        <img className="pic" src={`${props.avatar}`} alt="" />
+                        {props?.avatar && (
+                            <img
+                                className="pic"
+                                src={`${props?.avatar}`}
+                                alt=""
+                            />
+                        )}
                     </div>
                 </div>
                 <div className="center">
