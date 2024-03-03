@@ -128,3 +128,7 @@
     border-radius: 5px;
     margin: 25px;
 }
+
+.errorMsg {
+    color: #d86161;
+}

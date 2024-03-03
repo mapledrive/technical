@@ -22,23 +22,27 @@ interface IComments {
 
 const App: React.FC = () => {
     const [authors, setAuthors] = useState<IAuthor[]>([]);
-    const [comments, setComments] = useState<IComments[]>([]);
-    const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
+    const [comments, setComments] = useState<IComments[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
 
     useEffect(() => {
-        async function fetchCommentData() {
+        async function loadComments() {
             try {
-                const data = await getCommentsRequest(page);
-                setComments(data.data);
+                setLoading(true);
+                const result = await getCommentsRequest(page);
+                setComments((comments) => [...comments, ...result.data]);
+                setErrorMsg("");
                 setLoading(false);
             } catch (error) {
-                console.log("error while fetching comments");
+                setErrorMsg("Error while loading data. Try again later.");
+            } finally {
                 setLoading(false);
             }
         }
 
-        fetchCommentData();
+        loadComments();
     }, [page]);
 
     useEffect(() => {
@@ -73,14 +77,16 @@ const App: React.FC = () => {
             <div className="wrapper">
                 {`${comments.length} comments`}
                 <hr />
-                {results.map((post) => (
-                    <Comment
-                        key={post.id}
-                        {...post}
-                        {...authors[post.author]}
-                    />
-                ))}
+                {results &&
+                    results.map((post) => (
+                        <Comment
+                            key={post.id}
+                            {...post}
+                            {...authors[post.author]}
+                        />
+                    ))}
             </div>
+            {errorMsg && <p className="errorMsg">{errorMsg}</p>}
             <button
                 onClick={() => setPage((prevValue) => prevValue + 1)}
                 className="load"
